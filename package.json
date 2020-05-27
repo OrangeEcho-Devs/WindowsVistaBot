@@ -1,0 +1,17 @@
+{
+  "name": "orangeecho-stable",
+  "version": "5.0.0",
+  "description": "Discord bot for the OrangeEcho Discord server",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.1.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Orange Group Tech",
+  "license": "ISC"
+}

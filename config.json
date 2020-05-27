@@ -1,0 +1,22 @@
+{
+	"prefix": ".",
+	"token": "NzExODg1MzY2NzY4MDQyMDY0.Xsih_A.2-GkDgi0BF_w1Ep-kEKzxdZKCTs",
+
+	"OwnerID":"475149822366580744",
+
+	"BotManagerRoleID": "715040126648057866",
+	"ModeratorRoleID": "683437427599343699", 
+	"MuteRoleID": "688506080031932475",
+	"MemberRoleID": "685580794290634752",
+
+	"UserLog": "713233850485964882",
+	"ModLog": "713233850485964882",
+	"BotLog": "715040774332612628",
+
+	"botSuggestionWebhookID":"715040865973960716",
+	"botSuggestionWebhookToken":"BFXA9Uqrpnp-N3bwbC-z9s1TEjFm9hjQzjIeJd-Y-8ejfwNO6dkD3Sh-eFvU-UsmlImJ",
+
+	"AssignMemberRoleOnJoin": false,
+	"ProcessEndOnError": false,
+	"CrashNotify": true
+}
