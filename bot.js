@@ -7,7 +7,7 @@ client.commands = new Discord.Collection();
 client.modcommands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const {
-	PREFIX = 'o!',
+	PREFIX = '*',
 	BotManagerRoleID,
 	ModeratorRoleID,
 	OwnerID,
@@ -23,9 +23,9 @@ const {
 	MessageEmbed
 } = require('discord.js')
 
-version = '5.0.1'
+version = '5.1.1'
 codename = 'Stable'
-footertext = 'Version '+ version +'\nCodename: '+ codename
+footertext = 'botOS '+ version +'\nCodename: '+ codename
 errorcount = 0
 var safemode = false
 
@@ -51,9 +51,13 @@ fs.readFile('./errorcount.txt', function(err, data){
 	}
 })
 }
+
+
 //Bot ready
 client.once('ready', () => {
-	console.log('Version '+version)
+	client.user.setPresence({ activity: { name: 'with the members of OrangeEcho' }, type: 'WATCHING', status: 'idle' })
+	.catch(console.error);
+	console.log('botOS '+version)
 	console.log('Codename '+codename)
 	console.log('The bot has booted up successfully.');
 	if (fs.existsSync(`./errorcount.txt`)){
@@ -88,15 +92,8 @@ client.once('ready', () => {
 		else{
 		  client.emit('StartupPassed')
 		}
-		if (fs.existsSync(`./statusmessage.config`)){
-			fs.readFile('./statusmessage.config', function(err, data){
-				client.user.setActivity(data.toString(), { type: 'WATCHING' });
-				if(err){errorlog(err)}
-			})
-
-		}
-
-});
+	})
+			
 
 //Checks for shutdown flag
 if (fs.existsSync(`./shutdown.flag`)){
@@ -473,6 +470,7 @@ const MemberJoinEmbed = new Discord.MessageEmbed()
 	})
 });
 
+
 //Member leave
 client.on('guildMemberRemove', member => {
 	if(safemode == true)return;
@@ -769,3 +767,4 @@ function clean(text) {
 	  }}})
 //Login
 client.login(process.env.token);
+

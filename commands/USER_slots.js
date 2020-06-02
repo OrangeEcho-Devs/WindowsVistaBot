@@ -67,7 +67,7 @@ module.exports = {
               fs.readFile('./leaderboards/' + message.author.tag + '_gamestats.json', error => {
                 if(error) {
                   console.log("Mismatch. Lose. No leaderboard update.")
-                  respond('Slots', "<@" + message.author.id + ">'s slot game:\n" + slot1 + "   " + slot2 + "   " + slot3 + "\n" + "You lose this one.\nIf you want to gamble in Vegas, it's a bad idea for you." , message.channel)
+                  respond('Slots', "<@" + message.author.id + ">'s slot game:\n" + slot1 + "   " + slot2 + "   " + slot3 + "\n" + "Awww man, you lost.\nYou suck and shouldn't gamble in Vegas" , message.channel)
                   return
                 } else {
                   console.log("Mismatch. Lose.")
@@ -82,7 +82,7 @@ module.exports = {
                 })
               }
             })
-            respond('Slots', "<@" + message.author.id + ">'s slot game:\n" + slot1 + "   " + slot2 + "   " + slot3 + "\n" + "You lose this one.\nIf you want to gamble in Vegas, it's a bad idea for you." , message.channel)
+            respond('Slots', "<@" + message.author.id + ">'s slot game:\n" + slot1 + "   " + slot2 + "   " + slot3 + "\n" + "Aww man, you lost.\nYou suck and shouldn't gamble in Vegas" , message.channel)
             return
             }
           }

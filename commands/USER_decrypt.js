@@ -74,7 +74,7 @@ module.exports = {
         message.delete()
         fs.readFile('./leaderboards/' + message.author.tag + '_gamestats.json', error => {
           if(error) {
-            console.log("answer wrong. no leaderboard update.")
+            console.log("answer wrong. no leaderboard update. OOF")
             respond('Wrong!',"7h47 15 wr0n6, m8!\n(That is wrong, mate!)\nIf you want to compete in the leaderboards, type `leaderboard init`.", message.channel, '29BF00', `QID: ${item.qid}`)
             message.delete()
             return

@@ -13,7 +13,7 @@ A moderation bot for the Apple Explained Discord server.
 3. Run `npm i`.
 4. Move the configs from `/config_templates` to the main bot folder.
 5. Edit the configs as you wish.
-6. Run `node ae-bot.js`.
+6. Run `node bot.js`.
 
 ## Support
 

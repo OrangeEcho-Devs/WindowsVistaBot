@@ -11,11 +11,11 @@ module.exports = {
      if (message.author.id == message.mentions.members.first().id){
       respond('',`You can't perform this action on yourself, don't try to kid me.`, message.channel);return;
      }
-     const {ModeratorRoleID} = require('../config.json');
-			const checkmemberforroles = message.mentions.members.first()
-			if (checkmemberforroles.roles.cache.some(role => role.id === `${ModeratorRoleID}`)){
-       respond('',`You can't perform that action on this user.`, message.channel);return;
-      }
+     //const {ModeratorRoleID} = require('../config.json');
+			//const checkmemberforroles = message.mentions.members.first()
+			//if (checkmemberforroles.roles.cache.some(role => role.id === `${ModeratorRoleID}`)){
+       //respond('',`You can't perform that action on this user.`, message.channel);return;
+      //}
       if (fs.existsSync('./logs/' + message.mentions.members.first().id + '-warnings.log')
           &&
           fs.existsSync('./logs/' + message.mentions.members.first().id + '-modwarnings.log')){
