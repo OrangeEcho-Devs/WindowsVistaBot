@@ -55,7 +55,7 @@ fs.readFile('./errorcount.txt', function(err, data){
 
 //Bot ready
 client.once('ready', () => {
-	client.user.setPresence({ activity: { name: 'with the members of OrangeEcho' }, type: 'WATCHING', status: 'idle' })
+	client.user.setPresence({ activity: { name: 'with the members of Windows Vista\'s server' }, type: 'WATCHING', status: 'idle' })
 	.catch(console.error);
 	console.log('botOS '+version)
 	console.log('Codename '+codename)
