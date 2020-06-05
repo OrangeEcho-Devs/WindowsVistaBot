@@ -13,7 +13,7 @@ module.exports = {
 			let userID = argarray[1]
 			var reason = reason.replace(argarray[1], '')
 			if (message.author.id == argarray[1]){
-				respond('',`You can't perform this action on yourself.`, message.channel);
+				respond('',`Since you're here, you aren't banned isn't that obvious??`, message.channel);
 				return;
 			}
 			const {ModeratorRoleID} = require('../config.json');

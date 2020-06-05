@@ -23,8 +23,8 @@ const {
 	MessageEmbed
 } = require('discord.js')
 
-version = '5.1.1'
-codename = 'Stable'
+version = '6.0.0'
+codename = 'Stable (Windows Vista Edition)'
 footertext = 'botOS '+ version +'\nCodename: '+ codename
 errorcount = 0
 var safemode = false
@@ -55,7 +55,7 @@ fs.readFile('./errorcount.txt', function(err, data){
 
 //Bot ready
 client.once('ready', () => {
-	client.user.setPresence({ activity: { name: 'with the members of Windows Vista\'s server' }, type: 'WATCHING', status: 'idle' })
+	client.user.setPresence({ activity: { name: 'with the members of OrangeEcho' }, type: 'WATCHING', status: 'idle' })
 	.catch(console.error);
 	console.log('botOS '+version)
 	console.log('Codename '+codename)
@@ -327,6 +327,32 @@ client.on('message', async message => {
 			respond('🛑 Incorrect permissions',`<@${message.author.id}>, you don't seem to have the correct permissions to use this command or you can't run this command in this channel. Please try again later.`, message.channel)
 			return;
 	}
+	//AI Modules
+client.on('message', message => {
+	if (fs.existsSync('./aiModule.js' && !fs.existsSync('./safe_mode.flag'))){
+		const aiModule = require('./aiModule.js')
+	}
+	if(!safemode == true)
+	if (fs.existsSync('./aiModule.js'))
+
+	function returnFunction(result){
+		message.channel.send(result)
+	}
+
+	function returnFunctionRandomizer(result){
+		message.channel.send(result)
+	}
+
+	if(message.content.startsWith(`<@${client.user.id}>`) && !message.author.bot){
+		const aiModule = require('./aiModule.js')
+		const text = message.content.slice(`<@${client.user.id}>`.length+1).toLowerCase()
+		aiModule.execute(text, message.author, returnFunction)
+	}else if(message.content.startsWith(`<@!${client.user.id}>`) && !message.author.bot){
+		const aiModule = require('./aiModule.js')
+		const text = message.content.slice(`<@!${client.user.id}>`.length+1).toLowerCase()
+		aiModule.execute(text, message.author, returnFunction)
+	}
+})
 	//Channel not allowed
 		if (channelRestrictions[command.name] && !channelRestrictions[command.name].includes(message.channel.id)) {
 			respond('🛑 Incorrect permissions',`<@${message.author.id}>, you don't seem to have the correct permissions to use this command or you can't run this command in this channel. Please try again later.`, message.channel)

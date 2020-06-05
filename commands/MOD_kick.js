@@ -10,7 +10,7 @@ module.exports = {
 	execute(message, args, client) {
 		const argarray = message.content.slice(prefix.length).trim().split(/ +/g);
 		try {
-			if (message.author.id == message.mentions.members.first().id){respond('',`You can't perform this action on yourself.`, message.channel);return;}
+			if (message.author.id == message.mentions.members.first().id){respond('',`Are you REALLY gonna try and kick **YOURSELF**`, message.channel);return;}
 			const {ModeratorRoleID} = require('../config.json');
 			const checkmemberforroles = message.mentions.members.first()
 			if (checkmemberforroles.roles.cache.some(role => role.id === `${ModeratorRoleID}`)){respond('',`You can't perform that action on this user.`, message.channel);return;;return;}

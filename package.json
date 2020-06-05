@@ -5,7 +5,9 @@
   "main": "bot.js",
   "dependencies": {
     "discord.js": "^12.1.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "relevant-urban": "^2.0.0",
+    "urban": "^0.3.2"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,2 +1,6 @@
 OrangeEcho News
-No current news. Check back later.
+Version 6.0.0 has been released!
+New features:
+The bot has an AI now! Simply ping the bot and type the message next to it! Eg "@OrangeEcho Stable [message]"
+Bot cannot send emojis problem has been fixed!
+Certain improvements like recreating the text has been rolled out.
