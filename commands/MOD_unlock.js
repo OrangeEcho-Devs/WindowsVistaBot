@@ -16,7 +16,7 @@ module.exports = {
     channel.updateOverwrite(channel.guild.role, { SEND_MESSAGES: true });
 		if(args != ''){respond('🔓', `<#${message.channel.id}> was unlocked.\nReason: `+reason, message.channel)}
 		else{respond('🔓', `<#${message.channel.id}> was unlocked.`, message.channel)}
-		modaction(this.name, message.author.tag, message.channel.name, message.content)
+		unlockchannelaction(message.author.tag, message.channel.name)
 	}catch(error) {
 		respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
 		errorlog(error)

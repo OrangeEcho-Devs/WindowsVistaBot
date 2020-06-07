@@ -28,7 +28,7 @@ module.exports = {
      respond('🔇 Muted',mentionedmember+' was muted.', message.channel);
       fs.appendFileSync('./logs/' + taggeduser + '-warnings.log', 'Mute\nReason: ' + reason +'\n\n');
       fs.appendFileSync('./logs/' + taggeduser + '-modwarnings.log', 'Mute issued by '+ message.author.tag +'\nReason: ' + reason +'\n\n');
-      modaction(this.name, message.author.tag, message.channel.name, message.content)
+      muteaction(member, message.author.tag, reason)
     }catch(error) {
       respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
       errorlog(error)

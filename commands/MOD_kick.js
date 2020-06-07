@@ -24,7 +24,7 @@ module.exports = {
 			respond('⬅️ Kick','<@'+user.id+'> was kicked from the server. Goodbye and good riddance!\nReason: '+auditreason, message.channel)
 			channel.send(':wave: Goodbye and good riddance!');
 			respond('⬅️ Kick','You have been kicked from the server. You may rejoin at anytime.\n\nReason for kick: '+auditreason, user)
-			modaction(this.name, message.author.tag, message.channel.name, message.content)
+			kickaction(user, message.author.tag, auditreason)
 			user.kick({reason: `${message.author.tag} | ${auditreason}`})
 		}catch(error) {
 			respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)

@@ -45,7 +45,7 @@ module.exports = {
         })
 
         respond('✏️','<@'+message.mentions.members.first().id + '> had an entry in their punishment log cleared.', message.channel)
-        modaction(this.name, message.author.tag, message.channel.name, message.content)
+        removewarningaction(this.name, message.author.tag, message.channel.name, message.content)
       }else{
         respond('❌', 'Unable to find punishment information for this user.', message.channel)
       }

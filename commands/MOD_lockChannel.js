@@ -22,7 +22,7 @@ module.exports = {
       .then(() => {
       message.channel.send(`\`${channel.name}\` has been locked down, no more normies`);
       })
-		modaction(this.name, message.author.tag, message.channel.name, message.content)
+		lockchannelaction(message.author.tag, message.channel.name)
 	}catch(error) {
 		respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
 		errorlog(error)

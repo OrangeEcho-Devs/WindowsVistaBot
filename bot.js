@@ -7,7 +7,7 @@ client.commands = new Discord.Collection();
 client.modcommands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const {
-	PREFIX = 'o!',
+	PREFIX = '*',
 	BotManagerRoleID,
 	ModeratorRoleID,
 	OwnerID,
@@ -23,7 +23,7 @@ const {
 	MessageEmbed
 } = require('discord.js')
 
-version = '6.0.0'
+version = '6.3.4'
 codename = 'Stable (Windows Vista Edition)'
 footertext = 'botOS '+ version +'\nCodename: '+ codename
 errorcount = 0
@@ -131,16 +131,233 @@ if (fs.existsSync(`./strings.json`)){
 		}
 
 }
- modaction = function (RanCommand, RanBy, RanIn, FullCommand){
+//Default modaction 
+modaction = function (RanCommand, RanBy, RanIn, FullCommand){
 	const ModReportEmbed = new Discord.MessageEmbed()
 		ModReportEmbed.setColor('#F3ECEC')
 		ModReportEmbed.setTitle('Mod Action')
 		ModReportEmbed.setDescription(`A moderation action has occurred.`)
 		ModReportEmbed.addFields(
 			{ name: 'Command', value: `${RanCommand}`, inline: false },
-			{ name: 'Executor', value: `${RanBy}`, inline: false },
-			{ name: 'Channel', value: `${RanIn}`, inline: false },
-			{name: 'Full message', value: `${FullCommand}`, inline:false}
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+//Decancer
+decanceraction = function (userToDecancer, RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#98DCE8')
+		ModReportEmbed.setTitle('Decancer')
+		ModReportEmbed.setDescription(`Remove cancerous characters from nickname`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${userToDecancer}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `Remove cancerous characters from previous nickname`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Ban
+banaction = function (RanCommand, RanBy, RanIn, FullCommand){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#F01A1A')
+		ModReportEmbed.setTitle('Ban')
+		ModReportEmbed.setDescription(`Bans someone from the server`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${userToBan}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+
+}
+//Purge
+purgeaction = function (RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#81D8D0')
+		ModReportEmbed.setTitle('Purge')
+		ModReportEmbed.setDescription(`Removes messages in bulk`)
+		ModReportEmbed.addFields(
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Preban
+prebanaction = function (userToPreBan, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#F20B8E')
+		ModReportEmbed.setTitle('Preban')
+		ModReportEmbed.setDescription(`Bans the user when they enter the server`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${userToPreBan}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Clearwarn
+clearwarnaction = function (userToClear, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#C2FFCA')
+		ModReportEmbed.setTitle('Clearwarn')
+		ModReportEmbed.setDescription(`Clears the punishment log from the user`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${userToClear}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Hide Channel
+hidechannelaction = function (RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#FFC2F7')
+		ModReportEmbed.setTitle('Hide channel')
+		ModReportEmbed.setDescription(`Hides a channel from everyone`)
+		ModReportEmbed.addFields(
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Kick
+kickaction = function (user, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#2859B8')
+		ModReportEmbed.setTitle('Kick')
+		ModReportEmbed.setDescription(`Gives the specified member the boot from the server.`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${user}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Lock Channel
+lockchannelaction = function (RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#FF4500')
+		ModReportEmbed.setTitle('Lockdown')
+		ModReportEmbed.setDescription(`Denys the Send Messages permission for all users.`)
+		ModReportEmbed.addFields(
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Mute
+muteaction = function (RanBy, member, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#FF4500')
+		ModReportEmbed.setTitle('Mute')
+		ModReportEmbed.setDescription(`Shuts the specified user up`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${member}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Show channel
+showchannelaction = function (RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#81D8D0')
+		ModReportEmbed.setTitle('Show channel')
+		ModReportEmbed.setDescription(`Unhides a channel to all users`)
+		ModReportEmbed.addFields(
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Unlock channel
+unlockchannelaction = function (RanBy, RanIn){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#81D8D0')
+		ModReportEmbed.setTitle('Unlock channel')
+		ModReportEmbed.setDescription(`Regrants Send Messages permission to all users`)
+		ModReportEmbed.addFields(
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Channel', value: `${RanIn}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Unmute
+unmuteaction = function (member, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#10C891')
+		ModReportEmbed.setTitle('Unmute')
+		ModReportEmbed.setDescription(`Un-shuts up a user`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${member}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+
+//Warn
+warnaction = function (checkmemberforroles, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#FFFF00')
+		ModReportEmbed.setTitle('Warn')
+		ModReportEmbed.setDescription(`Warns a user`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${checkmemberforroles}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
+		)
+		ModReportEmbed.setTimestamp()
+		const modlogchannel = client.channels.cache.get(`${ModLog}`);
+		modlogchannel.send(ModReportEmbed)
+}
+//Unban
+unbanaction = function (checkmemberforroles, RanBy, reason){
+	const ModReportEmbed = new Discord.MessageEmbed()
+		ModReportEmbed.setColor('#10C891')
+		ModReportEmbed.setTitle('Warn')
+		ModReportEmbed.setDescription(`Warns a user`)
+		ModReportEmbed.addFields(
+			{ name: 'Offender', value: `${checkmemberforroles}`, inline: false },
+			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
+			{ name: 'Reason', value: `${reason}`, inline: false }
 		)
 		ModReportEmbed.setTimestamp()
 		const modlogchannel = client.channels.cache.get(`${ModLog}`);
@@ -263,9 +480,13 @@ getCommandList = function(modCheck, botManagerCheck, userID, showMemberCommands)
 	const newcommandlist = commandList.toString().replace(/,/g, '\n')
 	return newcommandlist
 }
-
-
-
+//Suggestion reactions
+client.on("message", message=>{
+    if(message.channel.name === "685074431202164747"){
+		message.react("👍");
+		message.react("👎");
+	}
+})
 //Shot on iPhone reactions
 client.on('message', message => {
 	if(safemode == true)return;
@@ -278,6 +499,32 @@ client.on('message', message => {
           message.react('❤️');
           message.react('👍');
         }}
+})
+//AI Modules
+client.on('message', message => {
+	if (fs.existsSync('./aiModule.js' && !fs.existsSync('./safe_mode.flag'))){
+		const aiModule = require('./aiModule.js')
+	}
+	if(!safemode == true)
+	if (fs.existsSync('./aiModule.js'))
+
+	function returnFunction(result){
+		message.channel.send(result)
+	}
+
+	function returnFunctionRandomizer(result){
+		message.channel.send(result)
+	}
+
+	if(message.content.startsWith(`<@${client.user.id}>`) && !message.author.bot){
+		const aiModule = require('./aiModule.js')
+		const text = message.content.slice(`<@${client.user.id}>`.length+1).toLowerCase()
+		aiModule.execute(text, message.author, returnFunction)
+	}else if(message.content.startsWith(`<@!${client.user.id}>`) && !message.author.bot){
+		const aiModule = require('./aiModule.js')
+		const text = message.content.slice(`<@!${client.user.id}>`.length+1).toLowerCase()
+		aiModule.execute(text, message.author, returnFunction)
+	}
 })
 
 client.on('message', message => {
@@ -327,32 +574,7 @@ client.on('message', async message => {
 			respond('🛑 Incorrect permissions',`<@${message.author.id}>, you don't seem to have the correct permissions to use this command or you can't run this command in this channel. Please try again later.`, message.channel)
 			return;
 	}
-	//AI Modules
-client.on('message', message => {
-	if (fs.existsSync('./aiModule.js' && !fs.existsSync('./safe_mode.flag'))){
-		const aiModule = require('./aiModule.js')
-	}
-	if(!safemode == true)
-	if (fs.existsSync('./aiModule.js'))
-
-	function returnFunction(result){
-		message.channel.send(result)
-	}
-
-	function returnFunctionRandomizer(result){
-		message.channel.send(result)
-	}
-
-	if(message.content.startsWith(`<@${client.user.id}>`) && !message.author.bot){
-		const aiModule = require('./aiModule.js')
-		const text = message.content.slice(`<@${client.user.id}>`.length+1).toLowerCase()
-		aiModule.execute(text, message.author, returnFunction)
-	}else if(message.content.startsWith(`<@!${client.user.id}>`) && !message.author.bot){
-		const aiModule = require('./aiModule.js')
-		const text = message.content.slice(`<@!${client.user.id}>`.length+1).toLowerCase()
-		aiModule.execute(text, message.author, returnFunction)
-	}
-})
+	
 	//Channel not allowed
 		if (channelRestrictions[command.name] && !channelRestrictions[command.name].includes(message.channel.id)) {
 			respond('🛑 Incorrect permissions',`<@${message.author.id}>, you don't seem to have the correct permissions to use this command or you can't run this command in this channel. Please try again later.`, message.channel)

@@ -8,11 +8,11 @@ module.exports = {
     execute(message, args, client) {
         try {
 			if (message.author.id == message.mentions.members.first().id){respond('',`Are you REALLY gonna try and ban **YOURSELF**`, message.channel);return;}
+			if (message.mentions.members.first().id == client.user.id){respond(`Not gonna ban myself, thanks`, message.channel);return;}
 			const {ModeratorRoleID} = require('../config.json');
 			const checkmemberforroles = message.mentions.members.first()
 			//if (checkmemberforroles.roles.cache.some(role => role.id === `${ModeratorRoleID}`)){respond('',`You can't perform that action on this user.`, message.channel);return;;return;}
 			const user = message.mentions.members.first();
-			const userToBan = message.mentions.members.first()
 			const userid = message.mentions.members.first().id
 			const guild = message.guild
 			const authorusername = message.author.username +'#' +message.author.discriminator
@@ -26,7 +26,7 @@ module.exports = {
 			message.channel.send('https://imgur.com/gallery/O3DHIA5')
 			respond('Banned','You were banned from the OrangeEcho server due to: '+ reason+'\n\nThis ban does not expire. ', user)
 			userToBan.ban({reason: `${message.author.tag}, ${reason}`})
-			modaction(this.name, message.author.tag, message.channel.name, message.content)
+			banaction(user, message.author.tag, reason)
         	}catch(error) {
 				respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
 				errorlog(error)

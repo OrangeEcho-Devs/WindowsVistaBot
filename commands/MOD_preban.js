@@ -8,6 +8,7 @@ module.exports = {
 		const {prefix} = require('../config.json')
 		const argarray = message.content.slice(prefix.length).trim().split(/ +/g);
 		const fs = require('fs')
+		const userToPreBan = message.mentions.members.first()
         try {
 			if(message.mentions.members.first()){
 				respond('',`Please use the \`ban\` command instead.`, message.channel);
@@ -16,7 +17,7 @@ module.exports = {
 
 			const idToBan = argarray[1]
 			if (message.author.id == idToBan){
-				respond('',`You can't perform this action on yourself.`, message.channel);
+				respond('',`Are you REALLY gonna try and preban **YOURSELF**`, message.channel);
 				return;
 			}
 			const {ModeratorRoleID} = require('../config.json');
@@ -33,7 +34,7 @@ module.exports = {
 			fs.readFile('./logs/idbanlist.txt', function(err, data){
 				if(err)console.log(err);
 				if(data.toString().includes(idToBan)){
-					respond('Error', 'User is already on the pre-ban list.', message.channel)
+					respond('Error', 'User is already on the pre-ban list. What are you doing??', message.channel)
 					return;
 				}else{
 					const userid = argarray[1]
@@ -46,8 +47,8 @@ module.exports = {
 					fs.appendFileSync('./logs/idbanlist.txt', `${userid}\n`);
 					fs.appendFileSync('./logs/' + userid + '-warnings.log', 'Ban\nReason: ' + reason +'\n\n');
 					fs.appendFileSync('./logs/' + userid + '-modwarnings.log', 'Ban issued by '+ authorusername +'\nReason: ' + reason +'\n\n');
-					respond('Ban',argarray[1]+' was banned.\nReason: '+reason, message.channel)
-					modaction(this.name, message.author.tag, message.channel.name, message.content)
+					respond('Preban',argarray[1]+' was prebanned.\nReason: '+reason, message.channel)
+					prebanaction(userToPreBan, message.author.tag, reason)
 				}
 			})
 			

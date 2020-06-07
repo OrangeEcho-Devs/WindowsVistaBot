@@ -7,6 +7,7 @@ module.exports = {
 	mod:true,
     execute(message, args, client) {
 		const {prefix} = require('../config.json')
+		const user = message.mentions.members.first();
 		const argarray = message.content.slice(prefix.length).trim().split(/ +/g);
         try {
 			var reason = args.join(' ')
@@ -29,7 +30,7 @@ module.exports = {
 			fs.appendFileSync('./logs/' + userID + '-modwarnings.log', 'Unban issued by '+ message.author.tag +'\nReason: ' + reason +'\n\n');
 			   
 			respond('Unban',userID+' was unbanned.\nReason: '+reason, message.channel)
-			
+			unbanaction(user, message.author.tag, reason)
 			message.guild.members.unban(userID)
         	}catch(error) {
 				respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)

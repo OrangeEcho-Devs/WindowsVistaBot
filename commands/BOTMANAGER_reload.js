@@ -12,7 +12,7 @@ module.exports = {
 			|| message.client.modcommands.find(cmd => cmd.aliases && cmd.aliases.includes(modcommandName));
 		
 		if (!command) {
-			return message.channel.send(`There is no command with name or alias \`${modcommandName}\`, ${message.author}!`);
+			return message.channel.send(`There is no command with name or alias \`${modcommandName}\`, ${message.author}, are you dumb??`);
 		}
 		
 		try{

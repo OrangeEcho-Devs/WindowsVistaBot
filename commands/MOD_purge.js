@@ -20,18 +20,18 @@ module.exports = {
 					return;
 				}
 				message.channel.bulkDelete(amount+1)
-				modaction(this.name, message.author.tag, message.channel.name, message.content)
+				purgeaction(message.author.tag, message.channel.name)
 				return //Broken
-				console.log(argarray[2])
+				/*console.log(argarray[2])
 				if(amount >= 70 && argarray[2] && argarray[2].includes('-override')){
 					console.log('Allowed purge.')
 					message.channel.bulkDelete(amount+1)
-					modaction(this.name, message.author.tag, message.channel.name, message.content)
+					purgeaction(this.name, message.author.tag, message.channel.name, message.content)
 				}else{
 					console.log('Declined purge.')
 					respond('❗', `You are attempting to purge a large amount of messages (${amount}). Please add\`-override\` at the end of the message to allow.`, message.channel)
 					return;
-				}
+				}*/
 				
 			}catch(error){
 				console.log(error)

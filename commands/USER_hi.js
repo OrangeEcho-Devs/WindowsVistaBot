@@ -11,13 +11,13 @@ module.exports = {
     const argarray = message.content.slice().trim().split(/ +/g);
     try {
       const reason = args.join(' ')
-    if (message.author.id === info.TommyOwnerID) {
+    /*if (message.author.id === info.TommyOwnerID) {
     respond('','Hello, <@'+ message.author.id+'>! :wave: Nice to see my guy that made the games for me! 🙂\nSay hi to Stephanie for me, will you? Thanks in advance!',message.channel);
-    }else if (message.author.id === info.DanielCreatorID) {
+    }else */if (message.author.id === info.OwnerID) {
     respond('','Hello, <@'+ message.author.id+'>! :wave: Nice to see my creator! 🙂\nHave you fixed me like you promised?',message.channel);
-    }else if (message.author.id === info.StephanieID) {
+   /* }else if (message.author.id === info.StephanieID) {
     respond('','Oh hi there, <@'+ message.author.id+'>! :wave: Nice to see you here! 🙂\nHow is Tommy doing? 😳',message.channel);
-    }else if (message.member.roles.cache.some(role => role.id === info.ModeratorRoleID)) {
+   */}else if (message.member.roles.cache.some(role => role.id === info.ModeratorRoleID)) {
     respond('','Hello, <@'+ message.author.id+'>! :wave: Nice to see one of the moderators! 🙂',message.channel);
     }else if (message.member.roles.cache.some(role => role.id === info.DeveloperRoleID)) {
     respond('','Hello, <@'+ message.author.id+'>! :wave: Nice to see one of my developers! 🙂',message.channel);

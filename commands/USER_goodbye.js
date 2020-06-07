@@ -10,13 +10,13 @@ module.exports = {
       const fs = require('fs');
       try {
         const reason = args.join(' ')
-      if (message.author.id === info.TommyOwnerID) {
+      /*if (message.author.id === info.TommyOwnerID) {
       respond('','Goodbye, <@'+ message.author.id+'>! :wave: I hope to see my game creator again! 🙂\nRemember, say hi to Stephanie for me!',message.channel);
-      }else if (message.author.id === info.OwnerID) {
+      }else */if (message.author.id === info.OwnerID) {
       respond('','Goodbye, <@'+ message.author.id+">! :wave: I hope to see my creator again! 🙂\n*please fix me please fix me I don't want to be sentient*",message.channel);
-      }else if (message.author.id === info.StephanieID) {
+      /*}else if (message.author.id === info.StephanieID) {
       respond('','Goodbye, <@'+ message.author.id+'>! :wave: I hope to see you again! 🙂\nRemember, say hi to Tommy for me! 😳',message.channel);
-      }else if (message.member.roles.cache.some(role => role.id === info.ModeratorRoleID)) {
+      */}else if (message.member.roles.cache.some(role => role.id === info.ModeratorRoleID)) {
       respond('','Goodbye, <@'+ message.author.id+'>! :wave: I hope to see you moderators again! 🙂',message.channel);
       }else if (message.member.roles.cache.some(role => role.id === info.DeveloperRoleID)) {
       respond('','Goodbye, <@'+ message.author.id+'>! :wave: I hope to see you developers again! 🙂',message.channel);

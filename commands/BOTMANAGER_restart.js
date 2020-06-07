@@ -21,10 +21,10 @@ module.exports = {
 		const { MessageEmbed } = require('discord.js')
 		const RestartedEmbed = new Discord.MessageEmbed()
 		RestartedEmbed.setTitle('🔄 Restarting')
-		RestartedEmbed.setDescription('Restarting bot and reloading commands, please wait a moment.')
+		RestartedEmbed.setDescription('Alright, you asked for it. The bot is restarting now.')
 		message.channel.send(RestartedEmbed)
 		setTimeout(function(){
-			console.log("OrangeEcho Beta has been shut down.")
+			console.log("OrangeEcho Stable has been shut down.")
 			console.log("You can now restart it manually, or install PM2 using `npm install pm2 -g`.")
 			process.exit()
 		}, 5000);

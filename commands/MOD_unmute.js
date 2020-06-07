@@ -22,7 +22,7 @@ module.exports = {
     const member = message.mentions.members.first();
    member.roles.remove(role);
     respond('🔈 Unmuted','<@'+ taggeduser +'> was unmuted.',message.channel);
-    modaction(this.name, message.author.tag, message.channel.name, message.content)
+    unmuteaction(member, message.author.tag, reason)
   }catch(error) {
     respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
     errorlog(error)

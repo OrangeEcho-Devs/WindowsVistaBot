@@ -37,7 +37,7 @@ module.exports = {
       respond('⚠️','You have been warned due to: '+ reason, warnedperson)
       
       //Mod action event
-      modaction(this.name, message.author.tag, message.channel.name, message.content)
+      warnaction(checkmemberforroles, message.author.tag, reason)
     }catch(error) {
       respond('Error', 'Something went wrong.\n'+error+`\nMessage: ${message}\nArgs: ${args}\n`, message.channel)
       errorlog(error)

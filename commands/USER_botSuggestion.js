@@ -48,7 +48,7 @@ module.exports = {
         .setTimestamp()
 
       webhookClient.send('', {
-        username: 'Bot Suggestion Webhook',
+        username: 'Bot Suggestion Webhook (Stable)',
         avatarURL: '',
         embeds: [embed],
       });

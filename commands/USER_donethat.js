@@ -1,7 +1,7 @@
 module.exports = {
     name: 'donethat',
     aliases: ['done'],
-    description: '**This is a game command.**\n😱 Have you done it?\n(Make sure you run .neverhaveiever to get a statement.).',
+    description: '**This is a game command.**\n😱 Have you done it?\n(Make sure you run *neverhaveiever to get a statement.).',
     usage: '',
     hidden:true,
     cooldown: 0,

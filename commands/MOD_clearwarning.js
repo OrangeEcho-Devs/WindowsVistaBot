@@ -7,6 +7,7 @@ module.exports = {
   mod:true,
 	execute(message, args, client) {
     const fs = require('fs');
+    const userToClear = message.mentions.members.first();
     try {
      if (message.author.id == message.mentions.members.first().id){
       respond('',`You can't perform this action on yourself, don't try to kid me.`, message.channel);return;
@@ -36,7 +37,7 @@ module.exports = {
           }
         })
         respond('✏️','<@'+message.mentions.members.first().id + '> had their punishment log cleared.', message.channel)
-        modaction(this.name, message.author.tag, message.channel.name, message.content)
+        clearwarnaction(userToClear, message.author.tag)
       }else{
         respond('❌', 'Unable to find punishment information for this user.', message.channel)
       }
