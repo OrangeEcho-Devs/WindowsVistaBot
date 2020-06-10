@@ -10,7 +10,7 @@ client.commands = new Discord.Collection();
 client.modcommands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const {
-	PREFIX = '*',
+	PREFIX = 'o!',
 	BotManagerRoleID,
 	ModeratorRoleID,
 	OwnerID,
