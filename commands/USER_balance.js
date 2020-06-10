@@ -5,7 +5,7 @@ module.exports = {
     usage: '*balance',
     cooldown: 0,
     mod:false,
-      execute(message, args, client) {
+      execute: async(message, args, client) => {
         const Discord = require('discord.js');
         const eco = require("discord-economy");
         const fs = require('fs');
