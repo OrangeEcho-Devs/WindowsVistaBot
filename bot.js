@@ -2,12 +2,15 @@
 console.log('The bot is currently booting up. Please wait a moment.')
 fs = require('fs');
 Discord = require('discord.js');
+const eco = require("discord-economy");
 const client = new Discord.Client();
+const urban = require('relevant-urban');
+let userData = JSON.parse(fs.readFileSync('./userData.json', 'utf8'));
 client.commands = new Discord.Collection();
 client.modcommands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const {
-	PREFIX = 'o!',
+	PREFIX = '*',
 	BotManagerRoleID,
 	ModeratorRoleID,
 	OwnerID,
@@ -23,8 +26,8 @@ const {
 	MessageEmbed
 } = require('discord.js')
 
-version = '6.3.4'
-codename = 'Stable (Windows Vista Edition)'
+version = '6.4.0'
+codename = 'Stable'
 footertext = 'botOS '+ version +'\nCodename: '+ codename
 errorcount = 0
 var safemode = false
@@ -51,7 +54,6 @@ fs.readFile('./errorcount.txt', function(err, data){
 	}
 })
 }
-
 
 //Bot ready
 client.once('ready', () => {
@@ -163,13 +165,13 @@ decanceraction = function (userToDecancer, RanBy, RanIn){
 }
 
 //Ban
-banaction = function (RanCommand, RanBy, RanIn, FullCommand){
+banaction = function (user, RanBy, reason){
 	const ModReportEmbed = new Discord.MessageEmbed()
 		ModReportEmbed.setColor('#F01A1A')
 		ModReportEmbed.setTitle('Ban')
 		ModReportEmbed.setDescription(`Bans someone from the server`)
 		ModReportEmbed.addFields(
-			{ name: 'Offender', value: `${userToBan}`, inline: false },
+			{ name: 'Offender', value: `${user}`, inline: false },
 			{ name: 'Responsible Moderator', value: `${RanBy}`, inline: false },
 			{ name: 'Reason', value: `${reason}`, inline: false }
 		)

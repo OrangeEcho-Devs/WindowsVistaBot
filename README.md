@@ -1,5 +1,8 @@
-# Apple-Explained-Moderation-Bot
-A moderation bot for the Apple Explained Discord server.
+# OrangeEcho Stable
+A multi-purpose bot for the OrangeEcho Server. Sometimes sarcastic, and fun to play around with.
+Original Bot: Focus bot/Apple Mod made by Freshman Devs or Daniel C
+
+We added some stuff like Mcdonalds, some fun stuff and tweaked some responses to be sarcastic and more fun
 
 ## Config files
 `config.json` is where you put the channel/role IDs, bot token, prefix, and other stuff.
@@ -17,5 +20,5 @@ A moderation bot for the Apple Explained Discord server.
 
 ## Support
 
-If you need any support, please join our Discord server.
+If you need any support, please join our Discord server. (Apple Explained server)
 https://discord.gg/rPAyzNs

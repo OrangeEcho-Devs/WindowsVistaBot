@@ -94,10 +94,10 @@ module.exports = {
 		if(input == "i made your games"){
 			returnFunction(`Oh, cool!`)
 		} else 
-		if(input.includes == "shutdown you"){
+		if(input.includes("shutdown you")){
 			returnFunction(`NO NO NO, please don't!`)
 		} else 
-		if(input.includes == "restart you"){
+		if(input.includes("restart you")){
 			returnFunction(`NO NO NO, please don't!`)
 		} else 
 		if(input == "uh it was me"){
@@ -242,7 +242,8 @@ module.exports = {
 		if(input == "whats the time" || input == "what's the time"){
 			var today = new Date();
 			var date = today.getMonth()+1+'-'+(today.getDate())+'-'+today.getFullYear();
-			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			var hours = today.getHours();
+			var time = hours + ":" + today.getMinutes() + ":" + today.getSeconds();
 			var dateTime = date+' '+time;
 			returnFunction(`For me it is ${time}, on ${date}`)
 		} else 
@@ -251,6 +252,12 @@ module.exports = {
 		} else 
 		if(input == "who's your favourite member"){
 			returnFunction(`Uh, uh, uh, my favorite is ||ERROR UNABLE TO LOAD||`)
+		} else 
+		if(input.includes("like update")){
+			returnFunction(`Oh yeah, updates are great! (Unless my creator Orange Group#5362 messes them up...)`)
+		} else 
+		if(input.includes("like this update")){
+			returnFunction(`Oh yeah, updates are great! (Unless my creator Orange Group#5362 messes them up...)`)
 		} else 
 		//Auto
 		if(input != '' && !fs.existsSync(`./aiModule${this.module+1}.js`)){

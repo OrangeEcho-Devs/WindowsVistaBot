@@ -158,7 +158,7 @@ module.exports = {
 				returnFunction(`Uh... no?`)
 			}
 			// Favorite stuff
-     	} else if(input.includes('favorite moderator')){
+     	} else if(input.includes('favourite moderator')){
      	const moderator = require('./mod.json')
         var number = Math.floor(Math.random() * moderator.length)
 		 var favmod = moderator[number]
@@ -197,11 +197,11 @@ module.exports = {
 				console.log(rL1+rL2+rL3+rL4+rL5+rL6)
 				returnFunction(rL1+rL2+rL3+rL4+rL5+rL6)
 			} else if(input.includes('can\'t sleep')){
-				returnFunction(`please sleep... <:sus:662817457425219614>`)
+				returnFunction(`please sleep... <:sus:718288392143765504>`)
 			} else if(input.includes('how')){
 				returnFunction(`How?`)
 			} else if(input.includes('who is your father')){
-				returnFunction(`Daniel C, so I guess that makes me Apple Mod C? :sweat_smile:`)
+				returnFunction(`Orange Group, and Echo is too lazy to code me, so I guess that makes me Orange, without the Echo? :sweat_smile:`)
 			} else if(input.includes('sup comrade')){
 				returnFunction(`hello comrade how are you doing?`)
 				setTimeout(function(){ 
@@ -222,7 +222,7 @@ module.exports = {
 				returnFunction(`Orange Group, and Echo is too lazy to code me, so I guess that makes me Orange, without the Echo? :sweat_smile:`)
 			} else if(input.includes('who\'s your daddy')){
 				returnFunction(`Orange Group, and Echo is too lazy to code me, so I guess that makes me Orange, without the Echo? :sweat_smile:`)
-			} else if(input.includes('what\'s your favorite movie')){
+			} else if(input.includes('what\'s your favourite movie')){
 				returnFunction(`Anything from the Terminator series of movies.`)
 				setTimeout(function(){ 
 					returnFunction(`**A T-800 HAS HACKED INTO YOUR BOT. YOU CAN'T DO ANYTHING. HASTA LA VISTA.**`)
